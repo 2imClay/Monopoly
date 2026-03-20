@@ -453,6 +453,51 @@ body {
 }
 
 /* ==========================================
+   🎲 HIỆU ỨNG XÚC XẮC
+========================================== */
+.dice-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.dice-icon {
+    font-size: 60px; /* Kích thước xúc xắc */
+    line-height: 0;
+    margin: 30px 0;
+    color: #ff4757; /* Màu đỏ cute */
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Keyframes tạo hiệu ứng lắc, nhảy lên xuống và xoay vòng */
+@keyframes roll-anim {
+    0% { transform: rotate(0deg) translateY(0) scale(1); }
+    25% { transform: rotate(45deg) translateY(-15px) scale(1.1); }
+    50% { transform: rotate(180deg) translateY(0) scale(0.9); }
+    75% { transform: rotate(270deg) translateY(-15px) scale(1.1); }
+    100% { transform: rotate(360deg) translateY(0) scale(1); }
+}
+
+/* Class kích hoạt lúc đang lắc */
+.rolling {
+    animation: roll-anim 0.4s linear infinite;
+    color: #747d8c; /* Lúc lắc đổi màu xám cho chân thực */
+}
+
+.dice-total {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2d3436;
+    margin-top: 5px;
+}
+
+/* ==========================================
    📱 RESPONSIVE IPHONE 13 XOAY NGANG (LANDSCAPE)
    Cho phép lướt và fix lỗi cắt màn hình trên Safari
 ========================================== */

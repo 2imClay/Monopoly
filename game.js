@@ -819,12 +819,48 @@ document.getElementById('roll-dice-btn').addEventListener('click', async () => {
         }
     }
 
-    // --- 2. ĐỔ XÚC XẮC ---
+    // --- 2. ĐỔ XÚC XẮC & TẠO HIỆU ỨNG ---
+    const rollBtn = document.getElementById('roll-dice-btn');
+    rollBtn.disabled = true; // Khóa nút bấm trong lúc đang lắc xúc xắc
+
+    // Tính toán kết quả thật
     const dice1 = Math.floor(Math.random() * 6) + 1;
     const dice2 = Math.floor(Math.random() * 6) + 1;
     const total = dice1 + dice2;
 
-    document.getElementById('dice-result').innerText = `🎲 ${dice1} + 🎲 ${dice2} = ${total}`;
+    // Mảng chứa các mặt xúc xắc Unicode (vị trí 1 đến 6)
+    const diceFaces = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+    const diceResultDOM = document.getElementById('dice-result');
+
+    logDisplay.innerText = `🎲 Đang đổ xúc xắc...`;
+
+    // CHẠY HIỆU ỨNG LẮC (Thay đổi mặt liên tục mỗi 100ms)
+    const rollInterval = setInterval(() => {
+        const r1 = Math.floor(Math.random() * 6) + 1;
+        const r2 = Math.floor(Math.random() * 6) + 1;
+        diceResultDOM.innerHTML = `
+            <div class="dice-wrapper">
+                <div class="dice-icon rolling">${diceFaces[r1]}</div>
+                <div class="dice-icon rolling">${diceFaces[r2]}</div>
+            </div>
+        `;
+    }, 100);
+
+    // Chờ 1 giây để người chơi xem hiệu ứng lắc
+    await sleep(1000); 
+    clearInterval(rollInterval);
+
+    // HIỂN THỊ KẾT QUẢ THẬT
+    diceResultDOM.innerHTML = `
+        <div class="dice-wrapper">
+            <div class="dice-icon" style="transform: scale(1.15);">${diceFaces[dice1]}</div>
+            <div class="dice-icon" style="transform: scale(1.15);">${diceFaces[dice2]}</div>
+        </div>
+        <div class="dice-total">Kết quả: ${total} bước</div>
+    `;
+    
+    // Đợi thêm nửa giây để người chơi nhìn rõ số rồi mới đi/xét ở tù
+    await sleep(500);
 
     // --- 3. XỬ LÝ KẾT QUẢ ĐỔ NẾU VẪN CÒN Ở TÙ ---
     if (player.inJail) {
@@ -842,6 +878,7 @@ document.getElementById('roll-dice-btn').addEventListener('click', async () => {
         // Hết lượt ở tù (dù ra được hay không thì đổ xong là mất lượt)
         currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
         updateTurnUI();
+        rollBtn.disabled = false;
         return; // Kết thúc hành động của nút đổ xúc xắc tại đây
     }
 
@@ -860,6 +897,7 @@ document.getElementById('roll-dice-btn').addEventListener('click', async () => {
     }
 
     updateTurnUI();
+    rollBtn.disabled = false;
 });
 
 window.onload = () => {
