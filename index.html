@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cờ Tỷ Phú Cute</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    
+    <div id="setup-screen" class="setup-overlay">
+        <div class="setup-box">
+            <h2>Thiết Lập Trò Chơi 🎲</h2>
+            
+            <div class="form-group">
+                <label>Số lượng người chơi:</label>
+                <select id="player-count">
+                    <option value="2">2 Người</option>
+                    <option value="3">3 Người</option>
+                    <option value="4" selected>4 Người</option>
+                </select>
+            </div>
+
+            <div id="player-details" class="player-details-container">
+                </div>
+
+            <button id="start-game-btn" class="start-btn">Bắt Đầu Chơi!</button>
+        </div>
+    </div>
+    <div class="monopoly-board">
+        <div class="center-area">
+            <div class="center-content">
+                <div id="player-turn" style="color: #ff4757;">Lượt: Người chơi 1</div>
+                <div id="dice-result" style="font-size: 50px; margin: 15px 0;">🎲 🎲</div>
+                <button id="roll-dice-btn" class="btn-cute">Đổ Xúc Xắc</button>
+                <div id="game-log" style="font-size: 16px; margin-top: 15px; color: #636e72;">Chào mừng đến với Cờ Tỷ
+                    Phú!</div>
+            </div>
+            <div id="bankruptcy-island" class="island">
+                <h3>Đảo Phá Sản 🏝️</h3>
+            <div id="island-tokens" class="token-area" style="display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px;"></div>
+    </div>
+        </div>
+
+        <div class="cell corner bg-start" style="grid-row: 10; grid-column: 11;">Xuất Phát<br>💰</div>
+        <div class="cell corner bg-jail" style="grid-row: 10; grid-column: 1;">Vào Tù<br>⛓️</div>
+        <div class="cell corner bg-event" style="grid-row: 1; grid-column: 1;">Tổ Chức<br>Sự Kiện 🎉</div>
+        <div class="cell corner bg-airport" style="grid-row: 1; grid-column: 11;">Sân Bay<br>✈️</div>
+
+        <div class="cell" style="grid-row: 10; grid-column: 10;">Cà Mau</div>
+        <div class="cell bg-chance" style="grid-row: 10; grid-column: 9;">Cơ hội ❓</div>
+        <div class="cell" style="grid-row: 10; grid-column: 8;">Vĩnh Long</div>
+        <div class="cell" style="grid-row: 10; grid-column: 7;">Vũng Tàu</div>
+        <div class="cell bg-station" style="grid-row: 10; grid-column: 6;">Bến xe<br>miền Nam 🚌</div>
+        <div class="cell" style="grid-row: 10; grid-column: 5;">TP. HCM</div>
+        <div class="cell" style="grid-row: 10; grid-column: 4;">Đà Lạt</div>
+        <div class="cell bg-luck" style="grid-row: 10; grid-column: 3;">Khí vận 🍀</div>
+        <div class="cell" style="grid-row: 10; grid-column: 2;">Đồng Nai</div>
+
+        <div class="cell" style="grid-row: 9 ; grid-column: 1;">Hà Tĩnh</div>
+        <div class="cell bg-tax" style="grid-row: 8; grid-column: 1;">Bãi đỗ xe 🅿️</div>
+        <div class="cell" style="grid-row: 7; grid-column: 1;">Đắk Lắk</div>
+        <div class="cell" style="grid-row: 6; grid-column: 1;">Đà Nẵng</div>
+        <div class="cell bg-station" style="grid-row: 5; grid-column: 1;">Bến xe<br>miền Tây 🚌</div>
+        <div class="cell" style="grid-row: 4; grid-column: 1;">Huế</div>
+        <div class="cell" style="grid-row: 3; grid-column: 1;">Nha Trang</div>
+        <div class="cell" style="grid-row: 2; grid-column: 1;">Nghệ An</div>
+
+        <div class="cell" style="grid-row: 1; grid-column: 10;">Thanh Hóa</div>
+        <div class="cell bg-chance" style="grid-row: 1; grid-column: 9;">Cơ hội ❓</div>
+        <div class="cell" style="grid-row: 1; grid-column: 8;">Hải Phòng</div>
+        <div class="cell" style="grid-row: 1; grid-column: 7;">Bắc Bling</div>
+        <div class="cell bg-station" style="grid-row: 1; grid-column: 6;">Bến xe<br>miền Bắc 🚌</div>
+        <div class="cell" style="grid-row: 1; grid-column: 5;">Quảng Ninh</div>
+        <div class="cell" style="grid-row: 1; grid-column: 4;">Thái Nguyên</div>
+        <div class="cell bg-luck" style="grid-row: 1; grid-column: 3;">Khí vận 🍀</div>
+        <div class="cell" style="grid-row: 1; grid-column: 2;">Tuyên Quang</div>
+
+        <div class="cell" style="grid-row: 9; grid-column: 11;">Lạng Sơn</div>
+        <div class="cell bg-tax" style="grid-row: 8; grid-column: 11;">Đóng thuế 💸</div>
+        <div class="cell" style="grid-row: 7; grid-column: 11;">Hà Nội</div>
+        <div class="cell" style="grid-row: 6; grid-column: 11;">Cao Bằng</div>
+        <div class="cell bg-station" style="grid-row: 5; grid-column: 11;">Bến xe<br>miền Đông 🚌</div>
+        <div class="cell" style="grid-row: 4; grid-column: 11;">Lào Cai</div>
+        <div class="cell" style="grid-row: 3; grid-column: 11;">Phú Quốc</div>
+        <div class="cell" style="grid-row: 2; grid-column: 11;">Điện Biên</div>
+    </div>
+
+    <div id="custom-modal" class="modal-overlay">
+        <div class="modal-box">
+            <h2 id="modal-title">Tiêu đề</h2>
+            <p id="modal-message">Nội dung thông báo sẽ hiện ở đây...</p>
+            <div id="modal-buttons" class="modal-actions">
+                </div>
+        </div>
+    </div>
+
+    
+
+    <script src="game.js"></script>
+</body>
+
+</html>
